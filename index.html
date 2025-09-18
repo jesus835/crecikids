@@ -3,7 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de IMC</title>
+    <title>Crecikids - App de Control de Peso</title>
+    
+    <!-- Meta tags para redes sociales -->
+    <meta name="description" content="Crecikids - Aplicación de control de peso y cálculo de IMC. Calcula tu índice de masa corporal de forma fácil y precisa. Incluye calculadora para adultos y niños.">
+    <meta name="keywords" content="crecikids, control de peso, IMC, índice masa corporal, calculadora peso, salud, fitness">
+    <meta name="author" content="CodexGT">
+    
+    <!-- Open Graph para Facebook, WhatsApp, etc. -->
+    <meta property="og:title" content="Crecikids - App de Control de Peso">
+    <meta property="og:description" content="Aplicación de control de peso y cálculo de IMC. Calcula tu índice de masa corporal de forma fácil y precisa.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/crecikids.png">
+    <meta property="og:url" content="">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Crecikids - App de Control de Peso">
+    <meta name="twitter:description" content="Aplicación de control de peso y cálculo de IMC. Calcula tu índice de masa corporal de forma fácil y precisa.">
+    <meta name="twitter:image" content="images/crecikids.png">
     <style>
         * {
             margin: 0;
@@ -38,7 +56,7 @@
             overflow: hidden;
             position: relative;
             display: none;
-            padding-bottom: 60px; /* Espacio para la navegación fija */
+            padding-bottom: 120px; /* Espacio para la navegación fija */
         }
 
         .screen.active {
@@ -51,7 +69,7 @@
             height: calc(100% - 60px);
             display: flex;
             flex-direction: column;
-            padding-bottom: 80px; /* Espacio para la navegación */
+            padding-bottom: 140px; /* Espacio para la navegación */
             transform: translateY(10%);
         }
 
@@ -298,13 +316,18 @@
             background: #34C759;
             color: #000000;
             border: none;
-            padding: 18px;
-            border-radius: 12px;
-            font-size: 16px;
+            padding: 8.316px 33.264px;
+            border-radius: 8.316px;
+            font-size: 22.176px;
             font-weight: 600;
             cursor: pointer;
-            margin-top: 10px;
+            margin-top: -20px;
             transition: background 0.3s ease;
+            width: auto;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
         }
 
         .calculate-btn:hover {
@@ -774,16 +797,21 @@
         }
 
         .pediatric-calculate-btn {
-            width: 100%;
+            width: auto;
             background: #34C759;
             color: #000000;
             border: none;
-            padding: 15px;
-            border-radius: 8px;
-            font-size: 16px;
+            padding: 6px 24px;
+            border-radius: 4.8px;
+            font-size: 19.2px;
             font-weight: 600;
             cursor: pointer;
             transition: background 0.3s ease;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            margin-top: -20px;
         }
 
         .pediatric-calculate-btn:hover {
@@ -970,6 +998,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            padding-bottom: 140px; /* Espacio para la navegación */
         }
 
         .meter-container {
@@ -1034,6 +1063,7 @@
             padding: 60px 20px 20px;
             height: calc(100% - 60px);
             overflow-y: auto;
+            padding-bottom: 140px; /* Espacio para la navegación */
         }
 
         .stats-grid {
