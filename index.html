@@ -96,18 +96,11 @@
             color: #000000;
         }
 
-        /* Logo global fijo arriba de todo */
+        /* Logo en el header */
         .global-logo {
-            position: fixed;
-            top: 8px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 10000; /* por encima de overlays y navegación */
-            width: 160px;
-            max-width: 45vw;
+            width: 80px;
             height: auto;
-            pointer-events: none; /* no bloquear clics */
-            filter: none;
+            margin-right: 10px;
         }
 
         .gender-selection {
@@ -1248,14 +1241,13 @@
     </style>
 </head>
 <body>
-    <!-- Logo global fijo -->
-    <img class="global-logo" src="images/crecikids.png" alt="CreciKids" />
 
     <div class="phone-container">
         <!-- Pantalla Principal - BMI Calculator -->
         <div class="screen active" id="calculator-screen">
             <div class="bmi-content">
                 <div class="header">
+                    <img class="global-logo" src="images/crecikids.png" alt="CreciKids">
                     <div style="flex:1; text-align:left;">
                         <h1 class="app-title">Control de Peso</h1>
                     </div>
@@ -1342,6 +1334,13 @@
         <!-- Pantalla BMI Meter -->
         <div class="screen" id="meter-screen">
             <div class="bmi-meter-content">
+                <div class="header">
+                    <img class="global-logo" src="images/crecikids.png" alt="CreciKids">
+                    <div style="flex:1; text-align:left;">
+                        <h1 class="app-title">Medidor BMI</h1>
+                    </div>
+                    <button class="menu-btn">→</button>
+                </div>
                 
                 <div class="meter-container">
                     <div class="meter-circle">
@@ -1378,7 +1377,10 @@
         <div class="screen gender-male" id="pediatric-screen">
             <div class="bmi-content">
                 <div class="header">
-                    <h1 class="app-title">Control de Peso Pediátrico</h1>
+                    <img class="global-logo" src="images/crecikids.png" alt="CreciKids">
+                    <div style="flex:1; text-align:left;">
+                        <h1 class="app-title">Control de Peso Pediátrico</h1>
+                    </div>
                     <button class="menu-btn" onclick="showScreen('calculator-screen')">←</button>
                 </div>
                 
@@ -1466,7 +1468,10 @@
         <div class="screen" id="stats-screen">
             <div class="stats-content">
                 <div class="header">
-                    <h1 class="app-title">Estadísticas</h1>
+                    <img class="global-logo" src="images/crecikids.png" alt="CreciKids">
+                    <div style="flex:1; text-align:left;">
+                        <h1 class="app-title">Estadísticas</h1>
+                    </div>
                     <button class="menu-btn">→</button>
                 </div>
                 
