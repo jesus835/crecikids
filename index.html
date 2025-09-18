@@ -576,12 +576,10 @@
             text-align: center;
         }
 
-        /* Fondo con imagen semitransparente en sección pediátrica */
-        /* Fondo para todas las pantallas */
+        /* Fondo con imagen semitransparente - SIN stats-screen */
         #calculator-screen::before,
         #meter-screen::before,
-        #pediatric-screen::before,
-        #stats-screen::before {
+        #pediatric-screen::before {
             content: '';
             position: absolute;
             inset: 0;
@@ -597,8 +595,7 @@
         
         #calculator-screen .bmi-content,
         #meter-screen .bmi-meter-content,
-        #pediatric-screen .bmi-content,
-        #stats-screen .stats-content {
+        #pediatric-screen .bmi-content {
             position: relative;
             z-index: 1;
         }
@@ -994,15 +991,19 @@
         }
 
         .meter-container {
-            width: 200px;
-            height: 200px;
+            width: 250px;
+            height: 250px;
             position: relative;
-            margin-bottom: 30px;
+            margin: 20px auto 40px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: translateY(10%);
         }
 
         .meter-circle {
-            width: 100%;
-            height: 100%;
+            width: 250px;
+            height: 250px;
             border-radius: 50%;
             background: conic-gradient(
                 #FFD700 0deg 90deg,    /* Bajo peso - amarillo */
@@ -1011,14 +1012,15 @@
                 #FF4500 270deg 360deg  /* Obesidad - rojo */
             );
             position: relative;
+            flex-shrink: 0;
         }
 
         .meter-inner {
             position: absolute;
-            top: 20px;
-            left: 20px;
-            right: 20px;
-            bottom: 20px;
+            top: 25px;
+            left: 25px;
+            right: 25px;
+            bottom: 25px;
             background: white;
             border-radius: 50%;
             display: flex;
@@ -1038,24 +1040,18 @@
             color: #6B7280;
         }
 
-        .meter-needle {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 2px;
-            height: 80px;
-            background: #1F2937;
-            transform-origin: bottom center;
-            transform: translateX(-50%) rotate(0deg);
-            transition: transform 0.5s ease;
-        }
 
-        /* Pantalla Statistics */
-        .stats-content {
-            padding: 60px 20px 20px;
+        /* Pantalla Statistics - Nueva versión limpia */
+        #stats-screen {
+            padding-bottom: 0 !important;
+        }
+        
+        .stats-content-new {
+            padding: 60px 20px 120px;
             height: calc(100% - 60px);
             overflow-y: auto;
-            padding-bottom: 140px; /* Espacio para la navegación */
+            position: relative;
+            z-index: 10;
         }
 
         .stats-grid {
@@ -1114,15 +1110,17 @@
             color: #6B7280;
         }
 
-        .chart-container {
+        .chart-container-new {
             background: #F9FAFB;
             border-radius: 12px;
             padding: 20px;
             margin-bottom: 20px;
+            position: relative;
+            z-index: 20;
         }
 
         /* Colores dinámicos para gráficos masculino (celeste) */
-        .gender-male .chart-container {
+        .gender-male .chart-container-new {
             background: #4A90E2;
             border-color: #4A90E2;
         }
@@ -1140,7 +1138,7 @@
         }
 
         /* Colores dinámicos para gráficos femenino (rosado) */
-        .gender-female .chart-container {
+        .gender-female .chart-container-new {
             background: #E91E63;
             border-color: #E91E63;
         }
@@ -1166,7 +1164,7 @@
         }
         #stats-screen.pediatric-gender-male:not(.gender-male):not(.gender-female) .stat-value { color: #000000; }
         #stats-screen.pediatric-gender-male:not(.gender-male):not(.gender-female) .stat-label { color: rgba(255, 255, 255, 0.8); }
-        #stats-screen.pediatric-gender-male:not(.gender-male):not(.gender-female) .chart-container { background: #4A90E2; border-color: #4A90E2; }
+        #stats-screen.pediatric-gender-male:not(.gender-male):not(.gender-female) .chart-container-new { background: #4A90E2; border-color: #4A90E2; }
         #stats-screen.pediatric-gender-male:not(.gender-male):not(.gender-female) .chart-title { color: #000000; }
         #stats-screen.pediatric-gender-male:not(.gender-male):not(.gender-female) .chart-fill { background: white; }
         #stats-screen.pediatric-gender-male:not(.gender-male):not(.gender-female) .chart-label { color: rgba(255, 255, 255, 0.8); }
@@ -1178,7 +1176,7 @@
         }
         #stats-screen.pediatric-gender-female:not(.gender-male):not(.gender-female) .stat-value { color: #000000; }
         #stats-screen.pediatric-gender-female:not(.gender-male):not(.gender-female) .stat-label { color: rgba(255, 255, 255, 0.8); }
-        #stats-screen.pediatric-gender-female:not(.gender-male):not(.gender-female) .chart-container { background: #E91E63; border-color: #E91E63; }
+        #stats-screen.pediatric-gender-female:not(.gender-male):not(.gender-female) .chart-container-new { background: #E91E63; border-color: #E91E63; }
         #stats-screen.pediatric-gender-female:not(.gender-male):not(.gender-female) .chart-title { color: #000000; }
         #stats-screen.pediatric-gender-female:not(.gender-male):not(.gender-female) .chart-fill { background: white; }
         #stats-screen.pediatric-gender-female:not(.gender-male):not(.gender-female) .chart-label { color: rgba(255, 255, 255, 0.8); }
@@ -1348,7 +1346,6 @@
                             <div class="meter-value" id="meter-value">0</div>
                             <div class="meter-label">BMI</div>
                         </div>
-                        <div class="meter-needle" id="meter-needle"></div>
                     </div>
                 </div>
                 <div class="result-section show">
@@ -1466,16 +1463,12 @@
 
         <!-- Pantalla Statistics -->
         <div class="screen" id="stats-screen">
-            <div class="stats-content">
+            <div class="stats-content-new">
                 <div class="header">
-                    <img class="global-logo" src="images/crecikids.png" alt="CreciKids">
-                    <div style="flex:1; text-align:left;">
-                        <h1 class="app-title">Estadísticas</h1>
-                    </div>
+                    <h1 class="app-title">Estadísticas</h1>
                     <button class="menu-btn">→</button>
                 </div>
                 
-
                 <div class="stats-grid">
                     <div class="stat-card">
                         <div class="stat-value" id="current-bmi">0</div>
@@ -1495,7 +1488,7 @@
                     </div>
                 </div>
 
-                <div class="chart-container">
+                <div class="chart-container-new">
                     <div class="chart-title">Categorías de IMC</div>
                     <div class="chart-item">
                         <div class="chart-label">Bajo Peso (&lt;18.5)</div>
@@ -1549,6 +1542,17 @@
             <div class="modal-actions">
                 <button class="modal-btn modal-btn-primary" onclick="goToPediatricFromWarning()">Ir a Pediatría</button>
                 <button class="modal-btn modal-btn-secondary" onclick="closeAgeWarningModal()">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Overlay para error de valores válidos -->
+    <div class="modal-overlay" id="valid-values-error-modal">
+        <div class="modal-content">
+            <div class="modal-title">⚠️ Error</div>
+            <div class="modal-bmi-description">Por favor ingresa valores válidos para edad y peso</div>
+            <div class="modal-actions">
+                <button class="modal-btn modal-btn-primary" onclick="closeValidValuesErrorModal()">Entendido</button>
             </div>
         </div>
     </div>
@@ -1757,7 +1761,7 @@
 
             // Validar datos básicos
             if (age <= 0 || weight <= 0) {
-                alert('Por favor ingresa valores válidos para edad y peso');
+                showValidValuesErrorModal();
                 return;
             }
 
@@ -1860,24 +1864,26 @@
         }
 
         function updateMeter(bmi) {
-            const needle = document.getElementById('meter-needle');
-            let angle = 0;
+            const meterValue = document.getElementById('meter-value');
+            let color = '#1F2937'; // Color por defecto (gris oscuro)
 
             if (bmi < 18.5) {
-                // Bajo peso: 0-90° (amarillo)
-                angle = (bmi / 18.5) * 90;
+                // Bajo peso - amarillo
+                color = '#FFD700';
             } else if (bmi < 25) {
-                // Peso normal: 90-180° (verde)
-                angle = 90 + ((bmi - 18.5) / 6.5) * 90;
+                // Peso normal - verde
+                color = '#34C759';
             } else if (bmi < 30) {
-                // Sobrepeso: 180-270° (naranja)
-                angle = 180 + ((bmi - 25) / 5) * 90;
+                // Sobrepeso - naranja
+                color = '#FF8C00';
             } else {
-                // Obesidad: 270-360° (rojo) - más hacia el final
-                angle = 270 + Math.min(((bmi - 30) / 10) * 90, 90);
+                // Obesidad - rojo
+                color = '#FF4500';
             }
 
-            needle.style.transform = `translateX(-50%) rotate(${angle}deg)`;
+            if (meterValue) {
+                meterValue.style.color = color;
+            }
         }
 
         // Percentil OMS (LMS) para IMC-edad
@@ -2118,6 +2124,17 @@
             showScreen('pediatric-screen');
         }
 
+        // Modal de error para valores válidos
+        function showValidValuesErrorModal() {
+            const modal = document.getElementById('valid-values-error-modal');
+            if (modal) modal.classList.add('show');
+        }
+
+        function closeValidValuesErrorModal() {
+            const modal = document.getElementById('valid-values-error-modal');
+            if (modal) modal.classList.remove('show');
+        }
+
         // Función para cerrar modal pediátrico
         function closePediatricBMIModal() {
             console.log('Cerrando modal pediátrico...');
@@ -2256,7 +2273,7 @@
             const weightDifference = Math.round((weightKg - targetWeight) * 10) / 10;
             document.getElementById('weight-diff').textContent = weightDifference > 0 ? `+${weightDifference}` : weightDifference;
 
-            // Actualizar medidor visual (aguja)
+            // Actualizar medidor visual (color del valor)
             updateMeter(bmi);
 
             // Abrir modal
