@@ -1557,6 +1557,29 @@
         </div>
     </div>
 
+    <!-- Modal Overlay para error de valores válidos pediátrico -->
+    <div class="modal-overlay" id="pediatric-valid-values-error-modal">
+        <div class="modal-content">
+            <div class="modal-title">⚠️ Error</div>
+            <div class="modal-bmi-description">Por favor ingresa valores válidos para edad y peso</div>
+            <div class="modal-actions">
+                <button class="modal-btn modal-btn-primary" onclick="closePediatricValidValuesErrorModal()">Entendido</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Overlay para edad adulta desde pediátrico -->
+    <div class="modal-overlay" id="adult-age-modal">
+        <div class="modal-content">
+            <div class="modal-title">Edad adulta</div>
+            <div class="modal-bmi-description">Para personas de 20 años o más usa la sección de adultos.</div>
+            <div class="modal-actions">
+                <button class="modal-btn modal-btn-primary" onclick="goToAdultFromPediatric()">Ir a Adultos</button>
+                <button class="modal-btn modal-btn-secondary" onclick="closeAdultAgeModal()">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Modal Overlay para Resultado IMC -->
     <div class="modal-overlay" id="bmi-modal">
         <div class="modal-content">
@@ -2135,6 +2158,28 @@
             if (modal) modal.classList.remove('show');
         }
 
+        // Modal de error para valores válidos pediátrico
+        function showPediatricValidValuesErrorModal() {
+            const modal = document.getElementById('pediatric-valid-values-error-modal');
+            if (modal) modal.classList.add('show');
+        }
+
+        function closePediatricValidValuesErrorModal() {
+            const modal = document.getElementById('pediatric-valid-values-error-modal');
+            if (modal) modal.classList.remove('show');
+        }
+
+        // Modal de edad adulta desde pediátrico
+        function closeAdultAgeModal() {
+            const modal = document.getElementById('adult-age-modal');
+            if (modal) modal.classList.remove('show');
+        }
+
+        function goToAdultFromPediatric() {
+            closeAdultAgeModal();
+            showScreen('calculator-screen');
+        }
+
         // Función para cerrar modal pediátrico
         function closePediatricBMIModal() {
             console.log('Cerrando modal pediátrico...');
@@ -2168,17 +2213,22 @@
             console.log('Datos pediátricos:', {years, monthsExtra, weight, height, gender});
 
             // Validar datos
-            if (years < 2 || years > 19) {
-                alert('La edad debe estar entre 2 y 19 años');
+            if (years < 2) {
+                showPediatricValidValuesErrorModal();
+                return;
+            }
+            if (years >= 20) {
+                const modal = document.getElementById('adult-age-modal');
+                if (modal) modal.classList.add('show');
                 return;
             }
             if (monthsExtra < 0 || monthsExtra > 11) {
-                alert('Los meses deben estar entre 0 y 11');
+                showPediatricValidValuesErrorModal();
                 return;
             }
 
             if (weight <= 0 || height <= 0) {
-                alert('Por favor ingresa valores válidos para peso y altura');
+                showPediatricValidValuesErrorModal();
                 return;
             }
 
@@ -2191,13 +2241,13 @@
             // Calcular Z-score y percentil OMS con edad en meses (2–19 años)
             const ageMonths = Math.round(years * 12 + monthsExtra);
             if (ageMonths < 24 || ageMonths > 228) {
-                alert('La edad debe estar entre 24 y 228 meses (2–19 años).');
+                showPediatricValidValuesErrorModal();
                 return;
             }
             const sexKey = gender === 'male' ? 'male' : 'female';
             const lms = getLMSInterpolated(sexKey, ageMonths);
             if (!lms) {
-                alert('No hay datos OMS disponibles para esa edad.');
+                showPediatricValidValuesErrorModal();
                 return;
             }
             const z = bmiToZ(bmi, lms.L, lms.M, lms.S);
