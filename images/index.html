@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crecekids - Google Play</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Google Sans', 'Roboto', Arial, sans-serif;
+            background-color: #ffffff;
+            color: #3c4043;
+            line-height: 1.4;
+        }
+        
+        /* Header de Google Play */
+        .google-play-header {
+            background: white;
+            padding: 16px 20px;
+            border-bottom: 1px solid #dadce0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .google-play-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .play-icon {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
+        
+        .google-play-text {
+            font-size: 20px;
+            font-weight: 600;
+            color: #5f6368;
+        }
+        
+        .header-icons {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+        
+        .header-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        .search-icon {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+        }
+        
+        .help-icon {
+            color: #5f6368;
+            font-size: 20px;
+        }
+        
+        .profile-icon {
+            background: #e91e63;
+            color: white;
+            font-weight: 500;
+        }
+        
+        /* Contenido principal */
+        .main-content {
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .app-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .app-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            flex-shrink: 0;
+        }
+        
+        .app-info {
+            flex: 1;
+        }
+        
+        .app-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+        }
+        
+        .developer {
+            font-size: 14px;
+            font-weight: 700;
+            color: #34a853;
+            margin-bottom: 4px;
+            text-decoration: none;
+        }
+        
+        .developer:hover {
+            text-decoration: underline;
+        }
+        
+        .category {
+            font-size: 14px;
+            color: #3c4043;
+            margin-bottom: 12px;
+        }
+        
+        .stats-row {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            flex: 1;
+            text-align: center;
+            min-width: 0;
+        }
+        
+        .stat-value {
+            font-size: 14px;
+            font-weight: 400;
+            color: #1a1a1a;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #5f6368;
+        }
+        
+        .rating {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+        
+        .star {
+            color: #fbbc04;
+            font-size: 16px;
+        }
+        
+        .content-rating {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .rating-icon {
+            width: 16px;
+            height: 16px;
+            background: #5f6368;
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+        }
+        
+        .info-icon {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #5f6368;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            margin-left: 4px;
+        }
+        
+        /* Botones */
+        .buttons-section {
+            margin-bottom: 20px;
+        }
+        
+        .primary-button {
+            width: 100%;
+            background: #34a853;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 12px 24px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+        
+        .secondary-button {
+            width: 100%;
+            background: white;
+            color: #3c4043;
+            border: 1px solid #dadce0;
+            border-radius: 12px;
+            padding: 12px 24px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 16px;
+            cursor: pointer;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .action-button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: none;
+            border: none;
+            color: #34a853;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: background-color 0.2s ease;
+        }
+        
+        .action-button:hover {
+            background-color: rgba(52, 168, 83, 0.1);
+        }
+        
+        .action-icon {
+            width: 20px;
+            height: 20px;
+        }
+        
+        /* Texto informativo */
+        .disclaimer {
+            font-size: 12px;
+            color: #5f6368;
+            line-height: 1.4;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid #dadce0;
+        }
+        
+        .disclaimer a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+        
+        .disclaimer a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Responsive */
+        @media (max-width: 480px) {
+            .main-content {
+                padding: 16px;
+            }
+            
+            .stats-row {
+                flex-direction: row;
+                gap: 12px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .action-buttons {
+                flex-direction: row;
+                gap: 8px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header de Google Play -->
+    <div class="google-play-header">
+        <div class="google-play-logo">
+            <img src="images/google-play-store-new.png" alt="Google Play" class="play-icon">
+            <div class="google-play-text">Google Play</div>
+        </div>
+        <div class="header-icons">
+            <div class="header-icon">
+                <img src="images/lupa.png" alt="Buscar" class="search-icon">
+            </div>
+            <div class="header-icon">
+                <span class="help-icon">?</span>
+            </div>
+            <div class="header-icon profile-icon">
+                <span>J</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="main-content">
+        <!-- Header de la app -->
+        <div class="app-header">
+            <img src="images/logoplay.png" alt="Crecikids" class="app-icon">
+            <div class="app-info">
+                <h1 class="app-name">Crecikids</h1>
+                <a href="#" class="developer">CodexGT</a>
+                <div class="category">App de Control de peso</div>
+            </div>
+        </div>
+
+        <!-- Estadísticas -->
+        <div class="stats-row">
+            <div class="stat-item">
+                <div class="stat-value">
+                    <div class="rating">
+                        <span>4.9</span>
+                        <span class="star">★</span>
+                    </div>
+                </div>
+                <div class="stat-label">40 opiniones</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="download-count">10</div>
+                <div class="stat-label">Descargas</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">
+                    <div class="content-rating">
+                        <div class="rating-icon">E</div>
+                        <span>Apto para todo público</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botones -->
+        <div class="buttons-section">
+            <button class="primary-button" onclick="incrementDownloadCount()">Descargar</button>
+            <button class="secondary-button">control de peso</button>
+            <div class="action-buttons">
+                <button class="action-button">
+                    <span class="action-icon">↗</span>
+                    <span>Compartir</span>
+                </button>
+                <button class="action-button">
+                    <span class="action-icon">+</span>
+                    <span>Agregar a la lista de deseos</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Texto informativo -->
+        <div class="disclaimer">
+            Se requiere Google Play Juegos Beta para instalar este juego en Windows. Si descargas el programa de versión beta y el juego, aceptas las <a href="https://policies.google.com/terms" target="_blank">Condiciones del Servicio de Google</a> y las <a href="https://play.google.com/about/play-terms/index.html" target="_blank">Condiciones del Servicio de Google Play</a>. <a href="https://play.google.com/googleplaygames" target="_blank">Obtén más información</a>.
+        </div>
+    </div>
+
+    <script>
+        // Función para incrementar el contador de descargas
+        function incrementDownloadCount() {
+            // Obtener el contador actual del localStorage o usar 10 como valor inicial
+            let currentCount = parseInt(localStorage.getItem('downloadCount')) || 10;
+            
+            // Incrementar el contador
+            currentCount++;
+            
+            // Guardar el nuevo valor en localStorage
+            localStorage.setItem('downloadCount', currentCount);
+            
+            // Actualizar el display
+            document.getElementById('download-count').textContent = currentCount;
+            
+            // Redirigir al enlace de descarga
+            window.location.href = 'https://googleplay-apps.netlify.app/crecikids.apk';
+        }
+        
+        // Cargar el contador guardado al cargar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            let savedCount = parseInt(localStorage.getItem('downloadCount')) || 10;
+            document.getElementById('download-count').textContent = savedCount;
+        });
+    </script>
+</body>
+</html>
