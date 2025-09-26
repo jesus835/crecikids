@@ -24,6 +24,12 @@
     <meta name="twitter:description" content="Aplicación de control de peso y cálculo de IMC. Calcula tu índice de masa corporal de forma fácil y precisa.">
     <meta name="twitter:image" content="https://crecikids.netlify.app/images/crecikids.png">
     <style>
+        @font-face {
+            font-family: 'Quebec Serial ExtraBold';
+            src: url('fonts/Quebec Serial ExtraBold.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
         * {
             margin: 0;
             padding: 0;
@@ -31,8 +37,11 @@
         }
 
         body {
-            font-family: 'TT Lakes Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #f5f5f0;
+            font-family: 'Quebec Serial ExtraBold', 'TT Lakes Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: url('images/fondo2.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             color: #333;
             overflow-x: hidden;
             min-height: 100vh;
@@ -52,7 +61,7 @@
         .screen {
             width: 100%;
             height: 100%;
-            background: #f5f5f0;
+            background: transparent;
             border-radius: 32px;
             overflow: hidden;
             position: relative;
@@ -116,7 +125,7 @@
         .gender-btn {
             flex: 1;
             padding: 15px;
-            border: 2px solid #6B7280;
+            border: 2px solid transparent;
             border-radius: 12px;
             background: #f0f0f0;
             color: #000000;
@@ -134,72 +143,72 @@
             color: #000000;
         }
 
-        /* Colores dinámicos para género masculino (celeste) */
+        /* Colores dinámicos para género masculino (dorado) */
         .gender-male .gender-btn.active {
-            border-color: #4A90E2;
-            background: #4A90E2;
+            border-color: #E2BA49;
+            background: #E2BA49;
             color: #000000;
         }
 
         .gender-male .arrow-btn {
-            border-color: #4A90E2;
-            background: #4A90E2;
+            border-color: #E2BA49;
+            background: #E2BA49;
             color: #000000;
         }
 
         .gender-male .arrow-btn:hover {
-            background: #357ABD;
+            background: #D4A842;
         }
 
         .gender-male .calculate-btn {
-            background: #4A90E2;
+            background: #E2BA49;
         }
 
         .gender-male .calculate-btn:hover {
-            background: #357ABD;
+            background: #D4A842;
         }
 
         .gender-male .input-field:focus {
-            border-color: #4A90E2;
+            border-color: #E2BA49;
         }
 
         .gender-male .unit-btn.active {
-            background: #4A90E2;
-            border-color: #4A90E2;
+            background: #E2BA49;
+            border-color: #E2BA49;
         }
 
-        /* Colores dinámicos para género femenino (rosado) */
+        /* Colores dinámicos para género femenino (amarillo) */
         .gender-female .gender-btn.active {
-            border-color: #E91E63;
-            background: #E91E63;
+            border-color: #FFDC2C;
+            background: #FFDC2C;
             color: #000000;
         }
 
         .gender-female .arrow-btn {
-            border-color: #E91E63;
-            background: #E91E63;
+            border-color: #FFDC2C;
+            background: #FFDC2C;
             color: #000000;
         }
 
         .gender-female .arrow-btn:hover {
-            background: #C2185B;
+            background: #E6C626;
         }
 
         .gender-female .calculate-btn {
-            background: #E91E63;
+            background: #FFDC2C;
         }
 
         .gender-female .calculate-btn:hover {
-            background: #C2185B;
+            background: #E6C626;
         }
 
         .gender-female .input-field:focus {
-            border-color: #E91E63;
+            border-color: #FFDC2C;
         }
 
         .gender-female .unit-btn.active {
-            background: #E91E63;
-            border-color: #E91E63;
+            background: #FFDC2C;
+            border-color: #FFDC2C;
         }
 
         .gender-icon {
@@ -209,6 +218,7 @@
         .gender-label {
             font-size: 14px;
             font-weight: 600;
+            font-family: 'Quebec Serial ExtraBold', 'TT Lakes Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         .input-section {
@@ -232,12 +242,13 @@
         .input-field {
             flex: 1;
             padding: 15px;
-            border: 2px solid #374151;
+            border: 2px solid transparent;
             border-radius: 12px;
             font-size: 16px;
             text-align: center;
             background: #ffffff;
             color: #000000;
+            font-family: 'Quebec Serial ExtraBold', 'TT Lakes Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         .input-field:focus {
@@ -281,6 +292,7 @@
             font-size: 16px;
             text-align: center;
             background: white;
+            font-family: 'Quebec Serial ExtraBold', 'TT Lakes Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         .unit-toggle {
@@ -321,6 +333,7 @@
             margin-left: auto;
             margin-right: auto;
             display: block;
+            font-family: 'Quebec Serial ExtraBold', 'TT Lakes Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         .calculate-btn:hover {
@@ -473,40 +486,40 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
-        /* Colores dinámicos para modal adulto masculino (celeste) */
+        /* Colores dinámicos para modal adulto masculino (dorado) */
         .gender-male .modal-bmi-value {
-            color: #4A90E2;
+            color: #E2BA49;
         }
 
         .gender-male .modal-bmi-range {
-            background: rgba(74, 144, 226, 0.1);
-            color: #4A90E2;
+            background: rgba(226, 186, 73, 0.1);
+            color: #E2BA49;
         }
 
         .gender-male .modal-btn-primary {
-            background: #4A90E2;
+            background: #E2BA49;
         }
 
         .gender-male .modal-btn-primary:hover {
-            background: #357ABD;
+            background: #D4A842;
         }
 
-        /* Colores dinámicos para modal adulto femenino (rosado) */
+        /* Colores dinámicos para modal adulto femenino (amarillo) */
         .gender-female .modal-bmi-value {
-            color: #E91E63;
+            color: #FFDC2C;
         }
 
         .gender-female .modal-bmi-range {
-            background: rgba(233, 30, 99, 0.1);
-            color: #E91E63;
+            background: rgba(255, 220, 44, 0.1);
+            color: #FFDC2C;
         }
 
         .gender-female .modal-btn-primary {
-            background: #E91E63;
+            background: #FFDC2C;
         }
 
         .gender-female .modal-btn-primary:hover {
-            background: #C2185B;
+            background: #E6C626;
         }
 
         .modal-bmi-category {
@@ -638,11 +651,12 @@
         .pediatric-input {
             width: 100%;
             padding: 12px;
-            border: 2px solid #E5E7EB;
+            border: 2px solid transparent;
             border-radius: 8px;
             font-size: 16px;
             text-align: center;
             background: white;
+            font-family: 'Quebec Serial ExtraBold', 'TT Lakes Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         .pediatric-input:focus {
@@ -665,7 +679,7 @@
         .pediatric-gender-btn {
             flex: 1;
             padding: 15px;
-            border: 2px solid #6B7280;
+            border: 2px solid transparent;
             border-radius: 12px;
             background: #f0f0f0;
             color: #000000;
@@ -683,98 +697,98 @@
             color: #000000;
         }
 
-        /* Colores dinámicos para pediátrico masculino (celeste) */
+        /* Colores dinámicos para pediátrico masculino (dorado) */
         .pediatric-gender-male .pediatric-gender-btn.active {
-            border-color: #4A90E2;
-            background: #4A90E2;
+            border-color: #E2BA49;
+            background: #E2BA49;
             color: #000000;
         }
 
         .pediatric-gender-male .arrow-btn {
-            border-color: #4A90E2;
-            background: #4A90E2;
+            border-color: #E2BA49;
+            background: #E2BA49;
             color: #000000;
         }
 
         .pediatric-gender-male .arrow-btn:hover {
-            background: #357ABD;
+            background: #D4A842;
         }
 
         .pediatric-gender-male .calculate-btn {
-            background: #4A90E2;
+            background: #E2BA49;
         }
 
         .pediatric-gender-male .calculate-btn:hover {
-            background: #357ABD;
+            background: #D4A842;
         }
 
         .pediatric-gender-male .pediatric-input:focus {
-            border-color: #4A90E2;
+            border-color: #E2BA49;
         }
 
-        /* Colores dinámicos para pediátrico femenino (rosado) */
+        /* Colores dinámicos para pediátrico femenino (amarillo) */
         .pediatric-gender-female .pediatric-gender-btn.active {
-            border-color: #E91E63;
-            background: #E91E63;
+            border-color: #FFDC2C;
+            background: #FFDC2C;
             color: #000000;
         }
 
         .pediatric-gender-female .arrow-btn {
-            border-color: #E91E63;
-            background: #E91E63;
+            border-color: #FFDC2C;
+            background: #FFDC2C;
             color: #000000;
         }
 
         .pediatric-gender-female .arrow-btn:hover {
-            background: #C2185B;
+            background: #E6C626;
         }
 
         .pediatric-gender-female .calculate-btn {
-            background: #E91E63;
+            background: #FFDC2C;
         }
 
         .pediatric-gender-female .calculate-btn:hover {
-            background: #C2185B;
+            background: #E6C626;
         }
 
         .pediatric-gender-female .pediatric-input:focus {
-            border-color: #E91E63;
+            border-color: #FFDC2C;
         }
 
-        /* Colores dinámicos para modal pediátrico masculino (celeste) */
+        /* Colores dinámicos para modal pediátrico masculino (dorado) */
         .pediatric-gender-male .modal-bmi-value {
-            color: #4A90E2;
+            color: #E2BA49;
         }
 
         .pediatric-gender-male .modal-bmi-range {
-            background: rgba(74, 144, 226, 0.1);
-            color: #4A90E2;
+            background: rgba(226, 186, 73, 0.1);
+            color: #E2BA49;
         }
 
         .pediatric-gender-male .modal-btn-primary {
-            background: #4A90E2;
+            background: #E2BA49;
         }
 
         .pediatric-gender-male .modal-btn-primary:hover {
-            background: #357ABD;
+            background: #D4A842;
         }
 
-        /* Colores dinámicos para modal pediátrico femenino (rosado) */
+        /* Colores dinámicos para modal pediátrico femenino (amarillo) */
         .pediatric-gender-female .modal-bmi-value {
-            color: #E91E63;
+            color: #FFDC2C;
         }
 
         .pediatric-gender-female .modal-bmi-range {
-            background: rgba(233, 30, 99, 0.1);
-            color: #E91E63;
+            background: rgba(255, 220, 44, 0.1);
+            color: #FFDC2C;
         }
 
         .pediatric-gender-female .modal-btn-primary {
-            background: #E91E63;
+            background: #FFDC2C;
         }
 
         .pediatric-gender-female .modal-btn-primary:hover {
-            background: #C2185B;
+            background: #E6C626;
         }
 
         .pediatric-gender-icon {
@@ -784,6 +798,7 @@
         .pediatric-gender-label {
             font-size: 14px;
             font-weight: 600;
+            font-family: 'Quebec Serial ExtraBold', 'TT Lakes Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         .pediatric-calculate-btn {
@@ -802,6 +817,7 @@
             margin-right: auto;
             display: block;
             margin-top: -20px;
+            font-family: 'Quebec Serial ExtraBold', 'TT Lakes Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         .pediatric-calculate-btn:hover {
@@ -852,14 +868,13 @@
             transform: translateX(-50%);
             width: 320px;
             height: 60px;
-            background: #2d2d2d;
-            border: 1px solid #374151;
+            background: #310E0B;
+            border: 1px solid #310E0B;
             border-radius: 30px;
             display: flex;
             justify-content: space-around;
             align-items: center;
             z-index: 9999;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
 
         .nav-item {
@@ -921,25 +936,23 @@
             color: #34C759;
         }
 
-        /* Colores dinámicos para iconos de navegación masculino (celeste) */
+        /* Colores dinámicos para iconos de navegación masculino (dorado) */
         .gender-male .nav-item.active {
-            color: #4A90E2;
+            color: #E2BA49;
         }
 
         .gender-male .nav-item.active .nav-label {
-            color: #4A90E2;
+            color: #E2BA49;
         }
 
-        /* Todos los iconos de navegación en blanco */
+        /* Iconos de navegación con colores originales */
         .nav-item img {
-            filter: brightness(0) invert(1) !important;
             transition: all 0.2s ease;
         }
 
         .nav-item:active img,
         .nav-item.touching img {
             transform: scale(0.9);
-            filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.5)) !important;
         }
 
         /* Animación de bounce al soltar el clic */
@@ -953,14 +966,6 @@
             animation: bounceClick 0.4s ease;
         }
 
-        /* Conservar color original SOLO del icono pediátrico */
-        .nav-item img[src$="bebe.png"] {
-            filter: none !important;
-        }
-        .nav-item:active img[src$="bebe.png"],
-        .nav-item.touching img[src$="bebe.png"] {
-            filter: none !important;
-        }
 
         /* Mejoras específicas para dispositivos táctiles */
         @media (hover: none) and (pointer: coarse) {
@@ -1069,10 +1074,10 @@
             text-align: center;
         }
 
-        /* Colores dinámicos para estadísticas masculino (celeste) */
+        /* Colores dinámicos para estadísticas masculino (dorado) */
         .gender-male .stat-card {
-            background: #4A90E2;
-            border-color: #4A90E2;
+            background: #E2BA49;
+            border-color: #E2BA49;
             color: #000000;
         }
 
@@ -1084,10 +1089,10 @@
             color: rgba(255, 255, 255, 0.8);
         }
 
-        /* Colores dinámicos para estadísticas femenino (rosado) */
+        /* Colores dinámicos para estadísticas femenino (amarillo) */
         .gender-female .stat-card {
-            background: #E91E63;
-            border-color: #E91E63;
+            background: #FFDC2C;
+            border-color: #FFDC2C;
             color: #000000;
         }
 
@@ -1120,10 +1125,10 @@
             z-index: 20;
         }
 
-        /* Colores dinámicos para gráficos masculino (celeste) */
+        /* Colores dinámicos para gráficos masculino (dorado) */
         .gender-male .chart-container-new {
-            background: #4A90E2;
-            border-color: #4A90E2;
+            background: #E2BA49;
+            border-color: #E2BA49;
         }
 
         .gender-male .chart-title {
@@ -1138,10 +1143,10 @@
             color: rgba(255, 255, 255, 0.8);
         }
 
-        /* Colores dinámicos para gráficos femenino (rosado) */
+        /* Colores dinámicos para gráficos femenino (amarillo) */
         .gender-female .chart-container-new {
-            background: #E91E63;
-            border-color: #E91E63;
+            background: #FFDC2C;
+            border-color: #FFDC2C;
         }
 
         .gender-female .chart-title {
@@ -1159,25 +1164,25 @@
         /* Colores dinámicos de estadísticas para pediátrico (aplicados en #stats-screen) */
         /* Solo aplicar cuando NO esté en modo adulto */
         #stats-screen.pediatric-gender-male:not(.gender-male):not(.gender-female) .stat-card {
-            background: #4A90E2;
-            border-color: #4A90E2;
+            background: #E2BA49;
+            border-color: #E2BA49;
             color: #000000;
         }
         #stats-screen.pediatric-gender-male:not(.gender-male):not(.gender-female) .stat-value { color: #000000; }
         #stats-screen.pediatric-gender-male:not(.gender-male):not(.gender-female) .stat-label { color: rgba(255, 255, 255, 0.8); }
-        #stats-screen.pediatric-gender-male:not(.gender-male):not(.gender-female) .chart-container-new { background: #4A90E2; border-color: #4A90E2; }
+        #stats-screen.pediatric-gender-male:not(.gender-male):not(.gender-female) .chart-container-new { background: #E2BA49; border-color: #E2BA49; }
         #stats-screen.pediatric-gender-male:not(.gender-male):not(.gender-female) .chart-title { color: #000000; }
         #stats-screen.pediatric-gender-male:not(.gender-male):not(.gender-female) .chart-fill { background: white; }
         #stats-screen.pediatric-gender-male:not(.gender-male):not(.gender-female) .chart-label { color: rgba(255, 255, 255, 0.8); }
 
         #stats-screen.pediatric-gender-female:not(.gender-male):not(.gender-female) .stat-card {
-            background: #E91E63;
-            border-color: #E91E63;
+            background: #FFDC2C;
+            border-color: #FFDC2C;
             color: #000000;
         }
         #stats-screen.pediatric-gender-female:not(.gender-male):not(.gender-female) .stat-value { color: #000000; }
         #stats-screen.pediatric-gender-female:not(.gender-male):not(.gender-female) .stat-label { color: rgba(255, 255, 255, 0.8); }
-        #stats-screen.pediatric-gender-female:not(.gender-male):not(.gender-female) .chart-container-new { background: #E91E63; border-color: #E91E63; }
+        #stats-screen.pediatric-gender-female:not(.gender-male):not(.gender-female) .chart-container-new { background: #FFDC2C; border-color: #FFDC2C; }
         #stats-screen.pediatric-gender-female:not(.gender-male):not(.gender-female) .chart-title { color: #000000; }
         #stats-screen.pediatric-gender-female:not(.gender-male):not(.gender-female) .chart-fill { background: white; }
         #stats-screen.pediatric-gender-female:not(.gender-male):not(.gender-female) .chart-label { color: rgba(255, 255, 255, 0.8); }
@@ -1402,11 +1407,11 @@
                     <div class="input-container pediatric-age-inputs">
                         <div style="flex:1; display:flex; gap:10px; align-items:center;">
                             <input type="number" class="input-field" id="pediatric-age-years" min="2" max="19" placeholder="Años">
-                            <span style="color:#9CA3AF; font-size:12px;">años</span>
+                            <span style="color:#000000; font-size:12px;">años</span>
                         </div>
                         <div style="flex:1; display:flex; gap:10px; align-items:center;">
                             <input type="number" class="input-field" id="pediatric-age-months" min="0" max="11" placeholder="Meses">
-                            <span style="color:#9CA3AF; font-size:12px;">meses</span>
+                            <span style="color:#000000; font-size:12px;">meses</span>
                         </div>
                     </div>
                 </div>
